@@ -31,7 +31,7 @@ Run docker command in each node to form the keycloak cluster(Replace {IP} with y
 	        -e CACHE_OWNERS_AUTH_SESSIONS_COUNT=2 \
 	        -e JGROUPS_DISCOVERY_PROTOCOL=JDBC_PING \
 	        -e JGROUPS_DISCOVERY_EXTERNAL_IP={IP} \
-	        keycloak1 \
+	        keycloak \
 	        start --http-enabled=true \
 	        --hostname={IP} \
 	        --hostname-port=8080 \
