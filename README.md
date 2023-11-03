@@ -1,16 +1,21 @@
 # keycloakhacluster
 
 Pre-requisites:
+
 docker 
 n-node vms, reachable to each other, 7600 port should be open.
 psotgresql installed.
 
 Download docker file and cache.xml file
 
+
 Create docker image
+
 docker build . -t keycloak:latest
 
+
 Run docker command in each node to form the keycloak cluster(Replace {IP} with you IP adddress)
+
 docker run --name mykeycloak1 -p 8080:8080 -p 7600:7600 \
         -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin \
         -e KEYCLOAK_FRONTEND_URL="http://{IP}:8080/auth" \
