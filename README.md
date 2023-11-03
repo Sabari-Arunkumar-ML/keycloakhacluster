@@ -23,6 +23,9 @@ Run docker command in each node to form the keycloak cluster(Replace {IP} with y
 	        -e CACHE_OWNERS=2 \
 	        -e KC_CACHE=ispn \
 	         -e KC_DB_URL_DATABASE=keycloak2 \
+	         -e KC_HOSTNAME_STRICT=false \
+                 -e KC_HOSTNAME_STRICT_HTTPS=false\
+                 -e KC_HTTP_ENABLED=true \
 	        -e KC_DB_USERNAME=keycloak \
 	        -e KC_DB_PASSWORD=password \
 	        -e KC_DB=postgres \
