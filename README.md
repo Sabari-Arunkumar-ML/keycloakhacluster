@@ -2,9 +2,9 @@
 
 Pre-requisites:
 
-docker 
-n-node vms, reachable to each other, 7600 port should be open.
-psotgresql installed.
+	docker 
+	n-node vms, reachable to each other, 7600 port should be open.
+	psotgresql installed.
 
 Download docker file and cache.xml file
 
