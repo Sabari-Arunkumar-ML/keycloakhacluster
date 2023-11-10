@@ -53,7 +53,7 @@
             <TCP external_addr="${env.JGROUPS_DISCOVERY_EXTERNAL_IP:127.0.0.1}" bind_port="7600" />
             <JDBC_PING connection_driver="org.postgresql.Driver"
                        connection_username="${env.KC_DB_USERNAME}" connection_password="${env.KC_DB_PASSWORD}"
-                       connection_url="jdbc:postgresql://${env.KC_DB_URL}/${env.KC_DB_URL_DATABASE}${env.KC_DB_URL_PROPERTIES:}"
+                       connection_url="${env.KC_DB_URL}${env.KC_DB_URL_PROPERTIES:}"
                        initialize_sql="CREATE SCHEMA IF NOT EXISTS ${env.KC_DB_SCHEMA:public}; CREATE TABLE IF NOT EXISTS ${env.KC_DB_SCHEMA:public}.JGROUPSPING (own_addr varchar(200) NOT NULL, cluster_name varchar(200) NOT NULL, bind_addr varchar(200) NOT NULL, updated timestamp default current_timestamp, ping_data BYTEA, constraint PK_JGROUPSPING PRIMARY KEY (own_addr, cluster_name));"
                        insert_single_sql="INSERT INTO ${env.KC_DB_SCHEMA:public}.JGROUPSPING (own_addr, cluster_name, bind_addr, updated, ping_data) values (?, ?, '${env.JGROUPS_DISCOVERY_EXTERNAL_IP:127.0.0.1}', NOW(), ?);"
                        delete_single_sql="DELETE FROM ${env.KC_DB_SCHEMA:public}.JGROUPSPING WHERE own_addr=? AND cluster_name=?;"
@@ -79,16 +79,16 @@
         </stack>
     </jgroups>
 
-    <cache-container name="keycloak" statistics="true">
+    <cache-container name="keycloak">
 	<transport lock-timeout="60000" stack="${env.KC_DB}-jdbc-ping-tcp"/>
-        <local-cache name="realms" statistics="true">
+        <local-cache name="realms">
             <encoding>
                 <key media-type="application/x-java-object"/>
                 <value media-type="application/x-java-object"/>
             </encoding>
             <memory max-count="10000"/>
         </local-cache>
-        <local-cache name="users" statistics="true">
+        <local-cache name="users">
             <encoding>
                 <key media-type="application/x-java-object"/>
                 <value media-type="application/x-java-object"/>
