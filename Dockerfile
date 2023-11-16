@@ -3,6 +3,7 @@ FROM quay.io/keycloak/keycloak:22.0.3
 COPY cache-ispn-jdbc-ping.xml /opt/keycloak/conf/cache-ispn-jdbc-ping.xml
 COPY keycloak.pem /opt/keycloak/conf/
 COPY keycloakkey.pem /opt/keycloak/conf/
+COPY quarkus.properties /opt/keycloak/conf/quarkus.properties
 
 COPY entrypoint.sh /opt/keycloak/bin/entrypoint.sh
 COPY keycloak.conf /opt/keycloak/conf/keycloak.conf
